@@ -158,7 +158,6 @@ chrome.runtime.onMessage.addListener(
 
             }
         }
-        console.log(string);
         texttoclipboard(string);
     }
 );
@@ -173,7 +172,6 @@ function getTables(tablename){
             let div=span.parentNode;
             table=span.nextSibling;
             //el primer table element de la div es la tabla
-            console.log("pushing table"+tablename);
             tables.push(table);
         }
     }
