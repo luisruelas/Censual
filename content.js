@@ -1,5 +1,5 @@
 var todo=[
-    //BH
+//BH
     {
         name:"CITOLOGIAHEMATICA",
         abb:null,
@@ -51,7 +51,33 @@ var todo=[
         labs:[
             {name:"CALCIO", abb:"CA"},
             {name:"FOSFORO",abb:"P"},
-            {name:"MAGNESIO", abb:"MG"}
+            {name:"MAGNESIO", abb:"MG"},
+            {name:"PROTEINACREACTIVAULTRASENSIBLE", abb:"PCR"}
+        ]
+    },
+    {
+        name:"Pruebassinagrupar",
+        abb:null,
+        labs:[
+            {name:"TROPONINAIALTASENSIBILIDAD", abb:"TROPIS"},
+            {name:"PEPTIDONATRIURETICOCEREBRAL", abb:"BNP"}
+        ]
+    },
+    {
+        name:"Pruebassinagrupar",
+        abb:null,
+        labs:[
+            {name:"AMILASATOTAL", abb:"AMILASA"},
+            {name:"LIPASA", abb:"LIPASA"},
+            {name:"AMILASAPANCREATICA", abb:"AMILASA PAN"}
+        ]
+    },
+    {
+        name:"Pruebassinagrupar",
+        abb:null,
+        labs:[
+            {name:"VANCOMICINA", abb:"VANCO"},
+            {name:"TACROLIMUS", abb:"TACRO"}
         ]
     },
     {
@@ -62,15 +88,46 @@ var todo=[
             {name:"TIEMPODETROMBOPLASTINAPARCIAL", abb:"TTP"},
             {name:"INR", abb:"INR"}
         ]
+    },
+    {
+        name:"GASOMETRÍAARTERIAL",
+        abb:"GASA",
+        labs:[
+            {name:"PH", abb:"PH"},
+            {name:"PO2", abb:"PO2"},
+            {name:"PCO2", abb:"PCO2"},
+            {name:"ANIONGAP", abb:"AG"},
+            {name:"BICARBONATO", abb:"HCO3"},
+            {name:"LACTATO", abb:"LAC"},
+            {name:"CREATININA", abb:"CREAT"},
+            {name:"SATURACIONDEO2", abb:"SAT"}
+        ]
+    },
+    {
+        name:"GASOMETRÍAVENOSA",
+        abb:"GASV",
+        labs:[
+            {name:"PH", abb:"PH"},
+            {name:"PO2", abb:"PO2"},
+            {name:"PCO2", abb:"PCO2"},
+            {name:"ANIONGAP", abb:"AG"},
+            {name:"BICARBONATO", abb:"HCO3"},
+            {name:"LACTATO", abb:"LAC"},
+            {name:"CREATININA", abb:"CREAT"},
+            {name:"SATURACIONDEO2", abb:"SAT"}
+        ]
+    },
+    {
+        name:"PERFILTIROIDEO",
+        abb:null,
+        labs:[
+            {name:"T4LIBRE", abb:"T4L"},
+            {name:"T4TOTAL",abb:"T4T"},
+            {name:"T3TOTAL", abb:"T3T"},
+            {name:"HORMONAESTIMULANTEDETIROIDES", abb:"TSH"},
+            {name:"TIROGLOBULINA", abb:"TIROGLOB"}
+        ]
     }
-
-    /*,
-    //otros
-    {name:"LIPASA",abb:"lipasa"},
-    {name:"VANCOMICINA", abb:"vanco"},
-    {name:"TACROLIMUS", abb:"tacro"}*/
-
-
 ];
 
 
@@ -82,20 +139,32 @@ chrome.runtime.onMessage.addListener(
             let page=todo[i];
             let labpagename=page.name;
             let labpageabb=page.abb;
-            if(labpageabb!=null){
+            let tables=getTables(labpagename);
+            if(labpageabb!=null && tables!=null){
                 string=string+labpageabb+" ";
             }
             let labs=page.labs;
-            for(let j=0;j<labs.length;j++){;
-                string=string+getNameResult(labs[j],getTable(labpagename))+" ";
+            for(let j=0;j<labs.length;j++){
+                if(getTables(labpagename)!=null){
+                    if(tables.length>1){
+                        for(let k=0;k<tables.length;k++){
+                            string=string+getNameResult(labs[j],tables[k])+" ";
+                        }
+                    }
+                    else{
+                        string=string+getNameResult(labs[j],tables[0])+" ";
+                    }
+                }
+
             }
         }
         console.log(string);
         texttoclipboard(string);
     }
 );
-function getTable(tablename){
+function getTables(tablename){
     //la tablename está en un span
+    let tables=new Array();
     let spans=document.getElementsByTagName("span");
     for(let i=0;i<spans.length;i++){
         let span=spans[i];
@@ -104,10 +173,14 @@ function getTable(tablename){
             let div=span.parentNode;
             table=span.nextSibling;
             //el primer table element de la div es la tabla
-            return table;
+            console.log("pushing table"+tablename);
+            tables.push(table);
         }
     }
-    return -1;
+    if(tables.length==0){
+        return null;
+    }
+    return tables;
 }
 function getNameResult(object,table) {
     let nameofvalue=object.name;
