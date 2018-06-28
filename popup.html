@@ -1,4 +1,7 @@
 <html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+</head>
     <script src="popup.js"></script>
     <style>
         #btcopy {
@@ -11,8 +14,29 @@
             display: inline-block;
             font-size: 16px;
         }
+        #title{
+            text-align: center;
+        }
+        #btmensaje{
+            color: crimson;
+            text-underline: none;
+            text-align: justify;
+        }
+        #divcopybutton{
+            text-align: center;
+            width: 100%;
+        }
+        #atext{
+            text-underline: none;
+        }
     </style>
     <body>
-        <button id="btcopy" >Copiar!</button>
+    <div id="wrapper">
+        <div id="title"><h1>Censual</h1></div>
+        <h5 id="btmensaje"><a href="#">Mensaje de despedida (sin lágrimas por favor)</a></h5>
+        <div id="divcopybutton">
+            <button id="btcopy" >Copiar!</button>
+        </div>
+    </div>
     </body>
 </html>

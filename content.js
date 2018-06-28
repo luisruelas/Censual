@@ -45,6 +45,7 @@ var todo=[
             {name:"CLORO", abb:"CL"}
         ]
     },
+
     {
         name:"Pruebassinagrupar",
         abb:null,
@@ -169,10 +170,14 @@ function getTables(tablename){
         let span=spans[i];
         if(span.innerHTML.toLowerCase().replace(/\s+/g, '')==tablename.toLowerCase().replace(/\s+/g, '')){
             //el elemento de arriba es una div
-            let div=span.parentNode;
-            table=span.nextSibling;
-            //el primer table element de la div es la tabla
-            tables.push(table);
+            if(span.parentNode.tagName!="DIV"){
+                table=span.parentNode.nextSibling;
+            }else{
+                table=table=span.nextSibling;
+            }
+            if(table.tagName!=null){
+                tables.push(table);
+            }
         }
     }
     if(tables.length==0){
@@ -199,8 +204,6 @@ function getNameResult(object,table) {
                     break;
                 }
             }
-
-
             let nameresultpair=object.abb+" "+result;
             return nameresultpair;
         }
