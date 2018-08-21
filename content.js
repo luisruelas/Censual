@@ -1,20 +1,9 @@
-var todo=[
-//BH
-    {
-        name:"CITOLOGIAHEMATICA",
-        abb:null,
-        labs:[
+var abreviaciones=[
             {name:"HEMOGLOBINA",abb:"HB"},
             {name:"HEMATOCRITO", abb:"HTO"},
             {name:"LEUCOCITOS", abb:"LEU"},
             {name:"NEUTROFILOS", abb:"NEU"},
-            {name:"PLAQUETAS", abb:"PLAQ"}
-        ]
-    },
-    {
-        name:"PRUEBASDEFUNCIONAMIENTOHEPATICO",
-        abb:null,
-        labs:[
+            {name:"PLAQUETAS", abb:"PLAQ"},
             {name:"ALBUMINA",abb:"ALB"},
             {name:"BILIRRUBINATOTAL",abb:"BT"},
             {name:"BILIRRUBINADIRECTA",abb:"BD"},
@@ -23,77 +12,28 @@ var todo=[
             {name:"ASPARTATOAMINOTRANSFERASAAST",abb:"AST"},
             {name:"FOSFATASAALCALINA",abb:"FA"},
             {name:"PROTEINASTOTALESENSUERO",abb:"PT"},
-            {name:"GLOBULINAS",abb:"GB"}
-        ]
-    },
-    {
-        name:"QUIMICASANGUINEADE3ELEMENTOS",
-        abb:null,
-        labs:[
+            {name:"GLOBULINAS",abb:"GB"},
             {name:"GLUCOSA", abb:"GLU"},
             {name:"NITROGENOUREICO",abb:"BUN"},
             {name:"UREA", abb:"UREA"},
-            {name:"CREATININA", abb:"CREAT"}
-        ]
-    },
-    {
-        name:"ELECTROLITOSSERICOS",
-        abb:null,
-        labs:[
+            {name:"CREATININA", abb:"CREAT"},
             {name:"SODIO", abb:"NA"},
             {name:"POTASIO",abb:"K"},
-            {name:"CLORO", abb:"CL"}
-        ]
-    },
-
-    {
-        name:"Pruebassinagrupar",
-        abb:null,
-        labs:[
+            {name:"CLORO", abb:"CL"},
             {name:"CALCIO", abb:"CA"},
             {name:"FOSFORO",abb:"P"},
             {name:"MAGNESIO", abb:"MG"},
-            {name:"PROTEINACREACTIVAULTRASENSIBLE", abb:"PCR"}
-        ]
-    },
-    {
-        name:"Pruebassinagrupar",
-        abb:null,
-        labs:[
+            {name:"PROTEINACREACTIVAULTRASENSIBLE", abb:"PCR"},
             {name:"TROPONINAIALTASENSIBILIDAD", abb:"TROPIS"},
-            {name:"PEPTIDONATRIURETICOCEREBRAL", abb:"BNP"}
-        ]
-    },
-    {
-        name:"Pruebassinagrupar",
-        abb:null,
-        labs:[
+            {name:"PEPTIDONATRIURETICOCEREBRAL", abb:"BNP"},
             {name:"AMILASATOTAL", abb:"AMILASA"},
             {name:"LIPASA", abb:"LIPASA"},
-            {name:"AMILASAPANCREATICA", abb:"AMILASA PAN"}
-        ]
-    },
-    {
-        name:"Pruebassinagrupar",
-        abb:null,
-        labs:[
+            {name:"AMILASAPANCREATICA", abb:"AMILASA PAN"},
             {name:"VANCOMICINA", abb:"VANCO"},
-            {name:"TACROLIMUS", abb:"TACRO"}
-        ]
-    },
-    {
-        name:"TIEMPOSDECOAGULACION(TPyTTP)",
-        abb:null,
-        labs:[
+            {name:"TACROLIMUS", abb:"TACRO"},
             {name:"TIEMPODEPROTROMBINA", abb:"TP"},
             {name:"TIEMPODETROMBOPLASTINAPARCIAL", abb:"TTP"},
-            {name:"INR", abb:"INR"}
-        ]
-    },
-    {
-        name:"GASOMETRÍAARTERIAL",
-        abb:"GASA",
-        labs:[
+            {name:"INR", abb:"INR"},
             {name:"PH", abb:"PH"},
             {name:"PO2", abb:"PO2"},
             {name:"PCO2", abb:"PCO2"},
@@ -101,13 +41,7 @@ var todo=[
             {name:"BICARBONATO", abb:"HCO3"},
             {name:"LACTATO", abb:"LAC"},
             {name:"CREATININA", abb:"CREAT"},
-            {name:"SATURACIONDEO2", abb:"SAT"}
-        ]
-    },
-    {
-        name:"GASOMETRÍAVENOSA",
-        abb:"GASV",
-        labs:[
+            {name:"SATURACIONDEO2", abb:"SAT"},
             {name:"PH", abb:"PH"},
             {name:"PO2", abb:"PO2"},
             {name:"PCO2", abb:"PCO2"},
@@ -115,124 +49,104 @@ var todo=[
             {name:"BICARBONATO", abb:"HCO3"},
             {name:"LACTATO", abb:"LAC"},
             {name:"CREATININA", abb:"CREAT"},
-            {name:"SATURACIONDEO2", abb:"SAT"}
-        ]
-    },
-    {
-        name:"PERFILTIROIDEO",
-        abb:null,
-        labs:[
+            {name:"SATURACIONDEO2", abb:"SAT"},
             {name:"T4LIBRE", abb:"T4L"},
             {name:"T4TOTAL",abb:"T4T"},
             {name:"T3TOTAL", abb:"T3T"},
             {name:"HORMONAESTIMULANTEDETIROIDES", abb:"TSH"},
-            {name:"TIROGLOBULINA", abb:"TIROGLOB"}
-        ]
-    }
+            {name:"TIROGLOBULINA", abb:"TIROGLOB"},
+            {name:"RELACION AST/ALT", abb:"AST/ALT"},
+            {name:"RELACION ALBUMINA/GLOBULINA", abb:"ALB/GLOB"},
+            {name:"COLESTEROL HDL", abb:"C-HDL"},
+            {name:"COLESTEROL LDL (MEDIDO)", abb:"C-LDL (MEDIDO)"},
+            {name:"VOLUMEN CORPUSCULAR MEDIO", abb:"VCM"},
+            {name:"HEMOGLOBINA CORPUSCULAR MEDIA", abb:"HCM"},
+            {name:"CONCENTRACION MEDIA DE HEMOGLOBINA", abb:"CMHC"},
+            {name:"LINFOCITOS", abb:"LINF"},
+            {name:"MONOCITOS", abb:"MONO"},
+            {name:"EOSINOFILOS", abb:"EOS"},
+            {name:"BASOFILOS", abb:"BASOF"},
+            {name:"AMPLITUD DE DISTRIBUCION ERITROCITARIA", abb:"ADE"},
+            {name:"ERITROCITOS", abb:"ERITROS"},
+            {name:"VOLUMEN PLAQUETARIO MEDIO", abb:"VPM"},
+            {name:"TESTIGO DE TTP", abb:"TEST-TTP"},
+            {name:"MAGNESIO EN SANGRE", abb:"MG"},
+            {name:"CREATININA EN SANGRE", abb:"CREAT"},
+            {name:"ACIDO URICO", abb:"AU"},
+            {name:"POTASIO EN SANGRE", abb:"K"},
+            {name:"CELULAS EPITELIALES", abb:"CELULAS EPITELIALES"},
+            {name:"BACTERIAS", abb:"BACT"},
+             
+            
+
+            {name:"COLESTEROL TOTAL", abb:"CT"}
+            
+            
+            
+            
 ];
+
 
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        let string="";
-        for(let i=0;i<todo.length;i++){
-            //eachlabpage
-            let page=todo[i];
-            let labpagename=page.name;
-            let labpageabb=page.abb;
-            let tables=getTables(labpagename);
-            if(labpageabb!=null && tables!=null){
-                string=string+labpageabb+" ";
-            }
-            let labs=page.labs;
-            for(let j=0;j<labs.length;j++){
-                if(getTables(labpagename)!=null){
-                    if(tables.length>1){
-                        for(let k=0;k<tables.length;k++){
-                            string=string+getNameResult(labs[j],tables[k])+" ";
-                        }
-                    }
-                    else{
-                        string=string+getNameResult(labs[j],tables[0])+" ";
-                    }
-                }
 
-            }
-        }
-        texttoclipboard(string);
+        texttoclipboard(parseText(getAllParams()));
     }
 );
-function getTables(tablename){
-    //la tablename está en un span
-    let tables=new Array();
-    let spans=document.getElementsByTagName("span");
-    for(let i=0;i<spans.length;i++){
-        let span=spans[i];
-        if(span.innerHTML.toLowerCase().replace(/\s+/g, '')==tablename.toLowerCase().replace(/\s+/g, '')){
-            //el elemento de arriba es una div
-            if(span.parentNode.tagName!="DIV"){
-                table=span.parentNode.nextSibling;
-            }else{
-                table=table=span.nextSibling;
-            }
-            if(table.tagName!=null){
-                tables.push(table);
+
+
+
+function getAllParams(){
+	params=document.getElementsByTagName("custom:titulo");
+    paramsarray=[];
+    for(i=0;i<params.length;i++){
+        paraminners=params[i].getElementsByTagName("*");
+        for(j=0;j<paraminners.length;j++){
+            if(paraminners[j].style.visibility!=="hidden"){
+                parametro=paraminners[j].innerHTML;
+                abreviaciones.forEach(
+                    function(abb){
+                        if(parametro.toLowerCase().replace(/[^a-z0-9]/gi,'')==abb.name.toLowerCase().replace(/[^a-z0-9]/gi,'')){
+                            parametro=abb.abb;
+                        }
+                    }
+
+                    );
+                result=getResultsOnCell(params[i].parentNode.nextSibling);
+                paramsarray.push(parametro+":"+result);
             }
         }
     }
-    if(tables.length==0){
-        return null;
-    }
-    return tables;
+
+    return (paramsarray)
 }
-function getNameResult(object,table) {
-    let nameofvalue=object.name;
-    let allspans=table.getElementsByTagName("span");
-    let i;
-    for(i=0;i<allspans.length;i++){
-        let spanelement=allspans[i];
-        let string=spanelement.innerHTML;
-        let result;
-        if(string.toLowerCase().replace(/\s+/g, '').replace(/[^a-zA-Z ]/g, "")===nameofvalue.toLowerCase().replace(/\s+/g, '').replace(/[^a-zA-Z ]/g, "")){
-            let tr=spanelement.parentNode.parentNode.parentNode;
-            let alltds=tr.getElementsByTagName("td");
-            let spans=alltds[1].getElementsByTagName("span");
-            for(let j=0;j<spans.length;j++){
-                let span=spans[j];
-                if(span.textContent.replace(/\s+/g, '').length<7){
-                    result=span.textContent.replace(/\s+/g, '');
-                    break;
-                }
+function getResultsOnCell(cell){
+    spans=cell.getElementsByTagName("span");
+    for(var i=0; i<spans.length; i++){
+        if(spans[i].id.indexOf("spanResultadosFinal")>0){
+            if((index=spans[i].innerHTML.indexOf("-->"))>0){
+                result=spans[i].innerHTML.substring(index+3,spans[i].innerHTML.length);
+                return result;
             }
-            let nameresultpair=object.abb+" "+result;
-            return nameresultpair;
+            return spans[i].innerHTML;
         }
     }
-    return "";
 }
 
-
-function sayhi(){
-    getAllData();
-}
-function getAllData(){
-    //id de la tabla
-
-    var array="holita";
-
-    //encontrar las  columnas que tienen la información del parametro y el valor
-
-    //iterar por las columnas poniendo en el array el parámetro y el valor
-
-    //parsear una string con ese array
-    texttoclipboard(parseString(array));
-
-    //copiar al clipboard esa string
+function parseText(array){
+    stringbuffer="";
+    array.forEach(function(pair){
+    	arraypair=pair.split(":");
+    	if(arraypair[1].replace(/[^a-z0-9]/gi,'').length>0){
+    		stringbuffer+=arraypair[0]+": "+arraypair[1]+"; ";
+    	}
+    	
+    });
+    dots=stringbuffer.replace(/,/g, '.');
+    return dots;
 }
 
-function parseString(array){
-    return array;
-}
 function texttoclipboard(text){
     document.addEventListener('copy', function(e){
         e.clipboardData.setData('text/plain', text);
