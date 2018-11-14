@@ -90,19 +90,26 @@ var abreviaciones=[
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-
-        texttoclipboard(parseText(getAllParams()));
+    	titles=document.getElementsByClassName("grupo-prueba-nombre-wrapper");
+    	length=
+    	stringbuffer=""; 
+    	for(let i=0;i<titles.length;++i){
+    		prueba=titles[i].getElementsByTagName("span")[0].innerHTML;
+    		tabla=titles[i].nextSibling;
+    		stringbuffer+=prueba.toUpperCase()+" "+parseText(getAllParams(tabla))+" ";
+    	}
+    	console.log(stringbuffer);
     }
 );
 
 
 
-function getAllParams(){
-	params=document.getElementsByTagName("custom:titulo");
+function getAllParams(table){
+	params=table.getElementsByTagName("custom:titulo");
     paramsarray=[];
-    for(i=0;i<params.length;i++){
+    for(let i=0;i<params.length;i++){
         paraminners=params[i].getElementsByTagName("*");
-        for(j=0;j<paraminners.length;j++){
+        for(let j=0;j<paraminners.length;j++){
             if(paraminners[j].style.visibility!=="hidden"){
                 parametro=paraminners[j].innerHTML;
                 abreviaciones.forEach(
